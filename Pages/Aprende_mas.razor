@@ -1,0 +1,34 @@
+@page "/aprende_mas"
+
+<PageTitle>Aprende más</PageTitle>
+<h1>Aprende más</h1>
+<div class="row">
+    @foreach (var video in videos)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <img class="card-img-top" src="https://i.ytimg.com/vi/@video.Url/hqdefault.jpg" alt="Card image cap">
+                <div class="card-body">
+                   <h5 class="card-title">@video.Titulo</h5>
+                    <a href="https://www.youtube.com/watch?v=@video.Url" class="btn btn-primary">Ver</a>
+            </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+
+    class Video{
+public string Titulo { get; set; }
+public string Url { get; set; }
+}
+List<Video> videos = new List<Video>{
+    new Video{Titulo = "Blazor en 10 minutos ", Url = "VDkiB5F7FH0"},
+    new Video{Titulo = "Introducción a Blazor", Url = "NNJfeM229zI"},
+    new Video{Titulo = "6 librerías de componentes Blazor ", Url = "Xu4rqjz7CHg"},
+    new Video{Titulo = "Cómo desplegar una aplicación Blazor", Url = "WDmzmJa0Yu4"},
+    new Video{Titulo = "Crear CRUD en Blazor ", Url = "NOJveObsX0Q"},
+};
+
+}

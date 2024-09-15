@@ -1,0 +1,43 @@
+@page "/tabla_multiplicar"
+
+<PageTitle>Tabla de Multiplicar</PageTitle>
+
+<div class="container mt-4">
+    <h1>Tabla de Multiplicar</h1>
+    
+    <div class="form-group">
+        <label for="numberInput">Ingresa un número:</label>
+        <input type="number" @bind="number" class="form-control" id="numberInput" placeholder="Ingresa un número" />
+    </div>
+
+    <button class="btn btn-primary mt-2" @onclick="GenerateTable">Generar Tabla</button>
+
+    <hr />
+
+    @if (showTable)
+    {
+        <h3>Tabla de multiplicar de @number</h3>
+        <ul class="list-group">
+            @foreach (var item in multiplicationTable)
+            {
+                <li class="list-group-item">@item</li>
+            }
+        </ul>
+    }
+</div>
+
+@code {
+    private int number;
+    private bool showTable = false;
+    private List<string> multiplicationTable = new List<string>();
+
+    private void GenerateTable()
+    {
+        multiplicationTable.Clear();
+        for (int i = 0; i <= 15; i++)
+        {
+            multiplicationTable.Add($"{i} x {number} = {i * number}");
+        }
+        showTable = true;
+    }
+}
